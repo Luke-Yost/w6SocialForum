@@ -17,7 +17,7 @@
       <span class="navbar-toggler-icon" />
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto">
+      <ul class="navbar-nav ">
         <li>
           <router-link
             :to="{ name: 'About' }"
@@ -27,13 +27,12 @@
           </router-link>
           
         </li>
-        
       </ul>
-      <h1 class="d-flex justify-content-center">The Network</h1>
+  
       <!-- LOGIN COMPONENT HERE -->
-      <Login />
     </div>
-    
+     <h1 class="d-flex text-center text-info">The Network</h1>
+    <Login />
   </nav>
 </template>
 
