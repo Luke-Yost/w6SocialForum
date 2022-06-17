@@ -31,7 +31,9 @@
   
       <!-- LOGIN COMPONENT HERE -->
     </div>
-     <h1 class="d-flex text-center text-info">The Network</h1>
+      <div class="flex-grow-1 text-center">
+        <h1 class="d-flex text-center text-info">The Network</h1>
+      </div>
     <Login />
   </nav>
 </template>
