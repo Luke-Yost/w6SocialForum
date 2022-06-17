@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="../assets/img/cw-logo.png" height="45" />
+        <img alt="logo" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.eFNZswtHM9BoSpaD4H9xVAHaHa%26pid%3DApi&f=1" height="45" />
       </div>
     </router-link>
     <button
@@ -25,11 +25,15 @@
           >
             About
           </router-link>
+          
         </li>
+        
       </ul>
+      <h1 class="d-flex justify-content-center">The Network</h1>
       <!-- LOGIN COMPONENT HERE -->
       <Login />
     </div>
+    
   </nav>
 </template>
 
