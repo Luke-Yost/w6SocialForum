@@ -7,8 +7,18 @@
       
         <div class="container">
           <div class="row">
-            <div class="col-8 offset-2">
+            <div class="col-8">
               <Post v-for="p in posts" :key="p.id" :post="p" />
+            </div>
+            <div class="col-4">
+              <!-- <div class="row">
+                <div class="col-12">
+                  <div class="border border-dark rounded">
+                    <img class="img-fluid " src="https:/thiscatdoesnotexist.com" alt="">
+                    <h3>title</h3>
+                  </div>
+                </div>
+              </div> -->
             </div>
           </div>
         </div>

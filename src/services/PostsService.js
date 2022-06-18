@@ -34,7 +34,11 @@ class PostsService {
   async likePost(id){
     const res = await api.post(`/api/posts/${id}/like`)
     console.log('liked post', res.data);
-    Pop.toast( 'Post liked!', 'top-center', 3000 )
+    // AppState.posts = res.data.posts
+
+    // AppState.posts.filter(p => p.id != id) = res.data
+    // likedPost = res.data.post 
+    // AppState.posts = [...AppState.posts,likedPost]
   }
 
 }

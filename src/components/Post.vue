@@ -20,7 +20,10 @@
 
 
 export default {
-  props: { post: {type: Object, required: true }},
+  props: { post: {type: Object, required: true },
+          
+          },
+        
 
   setup(props){
     return {
