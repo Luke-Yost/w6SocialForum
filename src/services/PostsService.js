@@ -10,6 +10,8 @@ class PostsService {
     // capture
     AppState.nextPage = res.data.older
     AppState.previousPage =  res.data.newer
+    
+    
   }
 
   async getNextPage(url){

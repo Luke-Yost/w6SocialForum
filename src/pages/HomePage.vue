@@ -7,7 +7,7 @@
       
         <div class="container">
           <div class="row">
-            <div class="col-10 offset-1">
+            <div class="col-8 offset-2">
               <Post v-for="p in posts" :key="p.id" :post="p" />
             </div>
           </div>
