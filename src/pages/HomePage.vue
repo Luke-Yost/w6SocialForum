@@ -13,8 +13,8 @@
           </div>
         </div>
         <div class="col-12 d-flex justify-content-center m-3">
-          <button class="mx-3 btn-lg btn-info"  @click="getNextPage(previousPage)">Previous Page</button>
-          <button class="mx-3 btn-lg btn-info"  @click="getPreviousPage(nextPage)">Next Page</button>
+          <button v-if="previousPage != null" class="mx-3 btn-lg btn-info"  @click="getNextPage(previousPage)">Previous Page</button>
+          <button v-if="nextPage != null" class="mx-3 btn-lg btn-info"  @click="getPreviousPage(nextPage)">Next Page</button>
         </div>
     </div>
 </div>
