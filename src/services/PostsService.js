@@ -30,6 +30,11 @@ class PostsService {
     AppState.previousPage =  res.data.newer
   }
 
+  async likePost(id){
+    const res = await api.post(`/api/posts/${id}/like`)
+    console.log('liked post', res.data);
+  }
+
 }
 
 export const postsService = new PostsService()

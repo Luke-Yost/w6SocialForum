@@ -6,9 +6,10 @@
       </div>
       <div class="col-md-6 p-3 bg-light text-dark border border-info rounded border-3 text-center">
         <p>{{post.body}}</p>
-        <h6>- {{post.creator.name}} | Likes: {{post.likes.length}}</h6>
+        <h6>- {{post.creator.name}}</h6>
+        <h6>Likes: {{post.likes.length}}</h6>
         <p>Posted {{(post.createdAt).substring(0,10)}}</p>
-        <button>Like 👍</button>
+        <button @click="likePost(post.id)" class="btn btn-info border border-dark border-2">Like 👍</button>
       </div>
     </div>
 </div>
@@ -23,7 +24,9 @@ export default {
 
   setup(props){
     return {
-      
+      likePost(id){
+        postsService.likePost(id)
+      }
     }
   }
 }
