@@ -2,7 +2,7 @@
 <div class="container-fluid">
     <div class="row">
       <div class="col-md-10 offset-md-1 m-3">
-        <h1 class="text-center">Post making form</h1>
+        <h1 class="d-flex justify-content-center">Post making form</h1>
       </div>
       
         <div class="container">
@@ -11,13 +11,13 @@
               <Post v-for="p in posts" :key="p.id" :post="p" />
             </div>
           </div>
-          
         </div>
-        
-        
-        
-      </div>
+        <div class="col-12 d-flex justify-content-center m-3">
+          <button class="mx-3 btn-lg btn-info"  @click="getNextPage(previousPage)">Previous Page</button>
+          <button class="mx-3 btn-lg btn-info"  @click="getPreviousPage(nextPage)">Next Page</button>
+        </div>
     </div>
+</div>
 
 
 
@@ -35,7 +35,15 @@ export default {
       const res = await postsService.getPosts()
     })
     return{
-      posts: computed(()=> AppState.posts)
+      posts: computed(()=> AppState.posts),
+      nextPage: computed(()=> AppState.nextPage),
+      previousPage: computed(()=> AppState.previousPage),
+      getNextPage(url){
+        postsService.getNextPage(url)
+      },
+      getPreviousPage(url){
+        postsService.getPreviousPage(url)
+      }
     }
   }
 }
