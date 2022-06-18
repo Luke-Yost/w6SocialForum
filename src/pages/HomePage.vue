@@ -11,14 +11,8 @@
               <Post v-for="p in posts" :key="p.id" :post="p" />
             </div>
             <div class="col-4">
-              <!-- <div class="row">
-                <div class="col-12">
-                  <div class="border border-dark rounded">
-                    <img class="img-fluid " src="https:/thiscatdoesnotexist.com" alt="">
-                    <h3>title</h3>
-                  </div>
-                </div>
-              </div> -->
+              <Tisment v-for="t in tisments" :tisment="t" />
+              
             </div>
           </div>
         </div>
@@ -37,25 +31,32 @@
   import { computed, onMounted } from "vue"
 import { AppState } from "../AppState"
 import { postsService } from "../services/PostsService"
+import { tismentsService } from "../services/TismentsService"
+import Tisment from "../components/Tisment.vue"
 
 export default {
-  name: 'Home',
-  setup(){
-    onMounted(async()=> {
-      const res = await postsService.getPosts()
-    })
-    return{
-      posts: computed(()=> AppState.posts),
-      nextPage: computed(()=> AppState.nextPage),
-      previousPage: computed(()=> AppState.previousPage),
-      getNextPage(url){
-        postsService.getNextPage(url)
-      },
-      getPreviousPage(url){
-        postsService.getPreviousPage(url)
-      }
-    }
-  }
+    name: "Home",
+    setup() {
+        onMounted(async () => {
+            const res = await postsService.getPosts();
+        });
+        onMounted(async () => {
+            const res = await tismentsService.getTisments();
+        });
+        return {
+            posts: computed(() => AppState.posts),
+            nextPage: computed(() => AppState.nextPage),
+            previousPage: computed(() => AppState.previousPage),
+            tisments: computed(() => AppState.tisments),
+            getNextPage(url) {
+                postsService.getNextPage(url);
+            },
+            getPreviousPage(url) {
+                postsService.getPreviousPage(url);
+            }
+        };
+    },
+    components: { Tisment }
 }
 </script>
 

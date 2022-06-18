@@ -2,8 +2,8 @@
   <div class="row">
                 <div class="col-12">
                   <div class="border border-dark rounded">
-                    <img class="img-fluid " src="https:/thiscatdoesnotexist.com" alt="">
-                    <h3>title</h3>
+                    <img class="img-fluid " :src="tisment.tall" alt="cool tisment">
+                    <h3>{{tisment.title}}</h3>
                   </div>
                 </div>
               </div>
