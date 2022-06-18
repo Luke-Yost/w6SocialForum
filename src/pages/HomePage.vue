@@ -12,6 +12,8 @@
             </div>
             <div class="col-4">
               <Tisment v-for="t in tisments" :tisment="t" />
+              <Tisment v-for="t in tisments" :tisment="t" />
+              <Tisment v-for="t in tisments" :tisment="t" />
               
             </div>
           </div>
