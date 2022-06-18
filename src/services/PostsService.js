@@ -1,4 +1,5 @@
 import { AppState } from "../AppState";
+import Pop from "../utils/Pop";
 import { api } from "./AxiosService";
 
 class PostsService {
@@ -33,6 +34,7 @@ class PostsService {
   async likePost(id){
     const res = await api.post(`/api/posts/${id}/like`)
     console.log('liked post', res.data);
+    Pop.toast( 'Post liked!', 'top-center', 3000 )
   }
 
 }
