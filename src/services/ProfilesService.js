@@ -11,6 +11,7 @@ class ProfilesService{
   async getProfilePosts(creatorId){
     const res = await api.get(`/api/profiles/${creatorId}/posts`)
     console.log('selected profiles posts', res.data);
+    AppState.selectedProfilePosts = res.data
   }
 }
 
