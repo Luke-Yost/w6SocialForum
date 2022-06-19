@@ -9,11 +9,15 @@
         <h4>Likes: {{post.likes.length}}</h4>
         <button @click="likePost(post.id)" class="btn btn-info border border-dark border-2">Like 👍</button>
         <p class="mt-2">Posted {{(post.createdAt).substring(0,10)}}</p>
-        <div class="border bg-dark rounded">
-          <h6 class="m-1">- {{post.creator.name}}</h6>
-          <p class="m-1">Go to Profile</p>
-        </div>
-        <button class="mt-1 rounded bg-danger text-light">Delete Post</button>
+        
+        <router-link @click="setSelectedProfile(post.creatorId)" :to="{name: 'Profile', params: {id: post.id} }">
+          <div class="border bg-dark rounded">
+            <h6 class="m-1">- {{post.creator.name}}</h6>
+            <p class="m-1">Go to Profile</p>
+          </div>
+        </router-link>
+
+        <button v-show="post.creatorId == account.id" class="mt-1 rounded bg-danger text-light">Delete Post</button>
       </div>
     </div>
 </div>
@@ -25,14 +29,16 @@
 
 export default {
   props: { post: {type: Object, required: true },
-          
           },
         
-
   setup(props){
     return {
       likePost(id){
         postsService.likePost(id)
+      },
+      setSelectedProfile(creatorId){
+        postsService.setSelectedProfile(creatorId)
+        postsService.getProfilePosts(creatorId)
       }
     }
   }
