@@ -4,12 +4,16 @@
       <div class="col-md-6 d-flex ps-2 pe-4 justify-content-center">
         <img :src="post.imgUrl"  class="img-fluid rounded align-items-center  border border-info border-3" alt="Post Image ">
       </div>
-      <div class="col-md-6 p-3 bg-light text-dark border border-info rounded border-3 text-center">
+      <div class="col-md-6 p-2 bg-light text-dark border border-info rounded border-3 text-center">
         <p>{{post.body}}</p>
-        <h6>- {{post.creator.name}}</h6>
-        <h6>Likes: {{post.likes.length}}</h6>
-        <p>Posted {{(post.createdAt).substring(0,10)}}</p>
+        <h4>Likes: {{post.likes.length}}</h4>
         <button @click="likePost(post.id)" class="btn btn-info border border-dark border-2">Like 👍</button>
+        <p class="mt-2">Posted {{(post.createdAt).substring(0,10)}}</p>
+        <div class="border bg-dark rounded">
+          <h6 class="m-1">- {{post.creator.name}}</h6>
+          <p class="m-1">Go to Profile</p>
+        </div>
+        <button class="mt-1 rounded bg-danger text-light">Delete Post</button>
       </div>
     </div>
 </div>
