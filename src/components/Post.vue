@@ -17,7 +17,8 @@
           </div>
         </router-link>
 
-        <button v-show="post.creatorId == account.id" class="mt-1 rounded bg-danger text-light">Delete Post</button>
+<!-- v-show="post.creatorId == account.id" -->
+        <button  class="mt-1 rounded bg-danger text-light">Delete Post</button>
       </div>
     </div>
 </div>
@@ -25,6 +26,7 @@
 
 <script>
   import { postsService } from "../services/PostsService"
+import { profilesService } from "../services/ProfilesService"
 
 
 export default {
@@ -37,8 +39,8 @@ export default {
         postsService.likePost(id)
       },
       setSelectedProfile(creatorId){
-        postsService.setSelectedProfile(creatorId)
-        postsService.getProfilePosts(creatorId)
+        profilesService.setSelectedProfile(creatorId)
+        profilesService.getProfilePosts(creatorId)
       }
     }
   }
