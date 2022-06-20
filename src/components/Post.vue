@@ -19,7 +19,7 @@
         </router-link>
 
 
-        <button v-show="post.creatorId == account.id" class="mt-1 rounded bg-danger text-light">Delete Post</button>
+        <button v-show="post.creatorId == account.id" @click="deletePost()" class="mt-1 rounded bg-danger text-light">Delete Post</button>
       </div>
     </div>
 </div>
@@ -30,6 +30,8 @@
 import { AppState } from "../AppState"
 import { postsService } from "../services/PostsService"
 import { profilesService } from "../services/ProfilesService"
+import { logger } from "../utils/Logger"
+import Pop from "../utils/Pop"
 
 
 export default {
@@ -40,6 +42,14 @@ export default {
     return {
       user: computed(()=> AppState.user),
       account: computed(()=> AppState.account),
+      async deletePost(){
+        try {
+          await postsService.deletePost(props.post.id);
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error')
+        }
+      },
       likePost(id){
         postsService.likePost(id)
       },
