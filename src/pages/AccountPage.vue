@@ -4,7 +4,7 @@
     <img class="rounded" :src="account.picture" alt="" />
     <p>{{ account.email }}</p>
   </div>
-  <form  class="row m-1" action="">
+  <form  class="row bg-dark rounded m-1" action="">
           <div class="col-10 offset-1 m-2">
             <label for="">Account Name</label>
             <input class="form-control" type="text" v-model="accountData.name" />
@@ -25,8 +25,21 @@
             <label for="">GitHub</label>
             <input class="form-control" type="text" v-model="accountData.github" />
           </div>
-
-          <button class="m-2" @click.prevent="changeProfile()">Edit Profile</button>
+          <div class="col-10 offset-1 m-2">
+            <label for="">Linked In</label>
+            <input class="form-control" type="text" v-model="accountData.linkedin" />
+          </div>
+          <div class="col-10 offset-1 m-2">
+            <label for="">Resume</label>
+            <input class="form-control" type="text" v-model="accountData.resume" />
+          </div>
+          <div class="col-10 offset-1 m-2">
+            <label for="">Class</label>
+            <input class="form-control" type="text" v-model="accountData.class" />
+          </div>
+          <div class="col-10 offset-1 m-2">
+          <button class="m-2 border border-3 border-info rounded bg-info text-light" @click.prevent="changeProfile()">Edit Profile</button>
+          </div>
         </form>
 </template>
 
