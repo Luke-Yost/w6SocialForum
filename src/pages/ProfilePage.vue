@@ -16,17 +16,17 @@
                 <div class="row">
                   <div class="col-md-8">
                     <div>
-                      <h3>Email: {{profile?.email}}</h3>
-                      <h3>{{profile?.bio}}</h3>
+                      <h3>Email: {{Profile?.email}}</h3>
+                      <h3>{{Profile?.bio}}</h3>
                     </div>
-                    <h5>Class: {{profile?.class}} | Graduated: {{profile?.graduated}}</h5>
-                    <h6>Github: {{profile?.github}}</h6>
-                    <h6>Linkedin: {{profile?.linkedin}}</h6>
-                    <h6>Resume: {{profile?.resume}}</h6>
+                    <h5>Class: {{Profile?.class}} | Graduated: {{Profile?.graduated}}</h5>
+                    <h6>Github: {{Profile?.github}}</h6>
+                    <h6>Linkedin: {{Profile?.linkedin}}</h6>
+                    <h6>Resume: {{Profile?.resume}}</h6>
                   </div>
                   <div class="col-md-4">
-                    <img class="img-fluid" :src="profile?.picture" alt="Profile Image">
-                    <h4>Name: {{profile?.name}}</h4>
+                    <img class="img-fluid" :src="Profile?.picture" alt="Profile Image">
+                    <h4>Name: {{Profile?.name}}</h4>
                   </div>
                 </div>
               </div>
@@ -51,15 +51,28 @@
 
 
 <script>
-import { computed } from "vue"
+import { computed, onMounted } from "vue"
 import { AppState } from "../AppState"
-
+import { useRoute } from "vue-router"
+import { logger } from "../utils/Logger";
+import Pop from "../utils/Pop";
+import { profilesService } from "../services/ProfilesService";
 
 export default {
     name: 'Profile',
-  setup(){
+  setup(params){
+    const route = useRoute();
+    onMounted(async()=> {
+      try {
+        await profilesService.setSelectedProfile(route.params.id)
+        await profilesService.getProfilePosts(route.params.id)
+      } catch (error) {
+        logger.error(error)
+        Pop.toast(error.message, 'error')
+      }
+    })
     return {
-      profile: computed(()=> AppState.selectedProfile),
+      Profile: computed(()=> AppState.selectedProfile),
       tisments: computed(() => AppState.tisments),
       profilePosts: computed(() => AppState.selectedProfilePosts),
     }

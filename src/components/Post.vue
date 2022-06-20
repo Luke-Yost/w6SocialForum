@@ -10,7 +10,7 @@
         <button v-if="user.isAuthenticated == true" @click="likePost(post.id)" class="btn btn-info border border-dark border-2">Like 👍</button>
         <p class="mt-2">Posted {{(post.createdAt).substring(0,10)}}</p>
         
-        <router-link @click="setSelectedProfile(post.creatorId)" :to="{name: 'Profile', params: {id: post.id} }">
+        <router-link @click="setSelectedProfile(post.creatorId)" :to="{name: 'Profile', params: {id: post.creator.id} }">
           <div class="border bg-dark rounded">
             <h6 class="m-1">- {{post.creator.name}}</h6>
             <img class="img-fluid" :src="post.creator.picture" alt="creator picture">
@@ -27,6 +27,7 @@
 
 <script>
   import { computed } from "vue"
+import { useRouter } from "vue-router"
 import { AppState } from "../AppState"
 import { postsService } from "../services/PostsService"
 import { profilesService } from "../services/ProfilesService"
@@ -39,6 +40,7 @@ export default {
           },
         
   setup(props){
+    const router = useRouter()
     return {
       user: computed(()=> AppState.user),
       account: computed(()=> AppState.account),
@@ -54,8 +56,12 @@ export default {
         postsService.likePost(id)
       },
       setSelectedProfile(creatorId){
-        profilesService.setSelectedProfile(creatorId)
-        profilesService.getProfilePosts(creatorId)
+        profilesService.setSelectedProfile(props.post.creatorId)
+        profilesService.getProfilePosts(props.post.id)
+        router.push({
+          name: "Profile",
+          params: {id: props.post.creatorId}
+        })
       }
     }
   }
