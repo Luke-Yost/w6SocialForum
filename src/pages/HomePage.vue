@@ -1,8 +1,11 @@
 <template>
 <div class="container-fluid">
     <div class="row">
+      <div v-if="user.isAuthenticated == false" class="col-10 offset-1 m-3 border border-3 border-info d-flex justify-content-center rounded bg-dark">
+        <h2>Login to Post</h2>
+      </div>
       <div class="col-10 offset-1 m-3 border border-3 border-info d-flex justify-content-center rounded bg-dark">
-        <form class="row m-1" action="">
+        <form v-if="user.isAuthenticated == true" class="row m-1" action="">
           <div class="col-10 offset-1m-2">
             <label for="">Post Body</label>
             <textarea
@@ -18,7 +21,7 @@
             <label for="">Post Image link</label>
             <input class="form-control" type="text" v-model="postData.imgUrl" />
           </div>
-          <button class="m-2" @click="postPost()">Post Post!</button>
+          <button class="m-2" @click="createPost()">Post Post!</button>
         </form>
       </div>
       
@@ -83,6 +86,7 @@ export default {
                 Pop.toast(error.message, 'error')
               }
             },
+            user: computed(()=> AppState.user),
             posts: computed(() => AppState.posts),
             nextPage: computed(() => AppState.nextPage),
             previousPage: computed(() => AppState.previousPage),

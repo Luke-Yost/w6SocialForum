@@ -15,6 +15,10 @@ class PostsService {
     
   }
 
+  async createPost(){
+    
+  }
+
   async getNextPage(url){
     const res = await api.get(url)
     console.log('next page', res.data);

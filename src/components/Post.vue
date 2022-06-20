@@ -18,15 +18,17 @@
           </div>
         </router-link>
 
-<!-- v-show="post.creatorId == account.id" -->
-        <button  class="mt-1 rounded bg-danger text-light">Delete Post</button>
+
+        <button v-show="post.creatorId == account.id" class="mt-1 rounded bg-danger text-light">Delete Post</button>
       </div>
     </div>
 </div>
 </template>
 
 <script>
-  import { postsService } from "../services/PostsService"
+  import { computed } from "vue"
+import { AppState } from "../AppState"
+import { postsService } from "../services/PostsService"
 import { profilesService } from "../services/ProfilesService"
 
 
@@ -36,6 +38,7 @@ export default {
         
   setup(props){
     return {
+      account: computed(()=> AppState.account),
       likePost(id){
         postsService.likePost(id)
       },
