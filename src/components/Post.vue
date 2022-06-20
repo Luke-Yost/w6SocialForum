@@ -2,7 +2,7 @@
   <div class="card mb-3 p-2 bg-dark shadow">
     <div class="row m-2 g-0 ">
       <div class="col-md-6 d-flex ps-2 pe-4 justify-content-center">
-        <img :src="post.imgUrl"  class="img-fluid rounded align-items-center  border border-info border-3" alt="Post Image ">
+        <img :src="post.imgUrl? post.imgUrl : 'https://yt3.ggpht.com/a/AATXAJxRZGFE2kbPB5rkkBtXLKQer65c3ApSAnauMw=s900-c-k-c0xffffffff-no-rj-mo'"  class="img-fluid rounded align-items-center  border border-info border-3" alt="Post Image ">
       </div>
       <div class="col-md-6 p-2 bg-light text-dark border border-info rounded border-3 text-center">
         <p>{{post.body}}</p>

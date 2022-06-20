@@ -53,21 +53,17 @@
 <script>
 import { computed } from "vue"
 import { AppState } from "../AppState"
-import Profile  from "../components/Profile.vue"
-import Tisment from "../components/Tisment.vue"
-import ProfilePost from "../components/ProfilePost.vue"
 
 
 export default {
     name: 'Profile',
   setup(){
     return {
-      // profile: computed(()=> AppState.selectedProfile),
+      profile: computed(()=> AppState.selectedProfile),
       tisments: computed(() => AppState.tisments),
       profilePosts: computed(() => AppState.selectedProfilePosts),
     }
-  },
-  components: { Profile, }
+  }
 }
 </script>
 
