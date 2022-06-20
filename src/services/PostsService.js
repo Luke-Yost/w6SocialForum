@@ -1,4 +1,5 @@
 import { AppState } from "../AppState";
+import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
 import { api } from "./AxiosService";
 
@@ -15,8 +16,10 @@ class PostsService {
     
   }
 
-  async createPost(){
-    
+  async createPost(postData){
+    const res = await api.post('api/posts', postData)
+    logger.log('postin post', res.data)
+    AppState.posts.push(res.data)
   }
 
   async getNextPage(url){
