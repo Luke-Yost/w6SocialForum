@@ -7,7 +7,7 @@
       <div class="col-md-6 p-2 bg-light text-dark border border-info rounded border-3 text-center">
         <p>{{post.body}}</p>
         <h4>Likes: {{post.likes.length}}</h4>
-        <button @click="likePost(post.id)" class="btn btn-info border border-dark border-2">Like 👍</button>
+        <button v-if="user.isAuthenticated == true" @click="likePost(post.id)" class="btn btn-info border border-dark border-2">Like 👍</button>
         <p class="mt-2">Posted {{(post.createdAt).substring(0,10)}}</p>
         
         <router-link @click="setSelectedProfile(post.creatorId)" :to="{name: 'Profile', params: {id: post.id} }">
@@ -38,6 +38,7 @@ export default {
         
   setup(props){
     return {
+      user: computed(()=> AppState.user),
       account: computed(()=> AppState.account),
       likePost(id){
         postsService.likePost(id)
