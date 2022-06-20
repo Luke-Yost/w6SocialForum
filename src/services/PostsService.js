@@ -16,7 +16,7 @@ class PostsService {
     
   }
   async deletePost(id){
-    const res = await api.delete('api/posts/',id);
+    const res = await api.delete(`api/posts/${id}`);
     logger.log('delete post', res.data)
   }
 
