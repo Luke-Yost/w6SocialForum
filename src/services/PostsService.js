@@ -26,6 +26,11 @@ class PostsService {
     AppState.posts.push(res.data)
   }
 
+  async changeProfile(accountData){
+    const res = api.put('/account', accountData)
+    logger.log('edited profile', res.data)
+    AppState.account = res.data
+  }
   async getNextPage(url){
     const res = await api.get(url)
     console.log('next page', res.data);

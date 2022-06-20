@@ -6,7 +6,7 @@
       </div>
       <div class="col-10 offset-1 m-3 border border-3 border-info d-flex justify-content-center rounded bg-dark">
         <form v-if="user.isAuthenticated == true" class="row m-1" action="">
-          <div class="col-10 offset-1m-2">
+          <div class="col-10 offset-1 m-2">
             <label for="">Post Body</label>
             <textarea
               class="form-control"
@@ -21,7 +21,7 @@
             <label for="">Post Image link</label>
             <input class="form-control" type="text" v-model="postData.imgUrl" />
           </div>
-          <button class="m-2" @click="createPost()">Post Post!</button>
+          <button class="m-2" @click.prevent="createPost()">Post Post!</button>
         </form>
       </div>
       

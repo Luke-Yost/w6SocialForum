@@ -31,10 +31,10 @@
       >
         <router-link :to="{ name: 'Account' }">
           <div class="list-group-item list-group-item-action hoverable">
-            Manage Account
+            Manage/Edit Account
           </div>
         </router-link>
-        <div>Edit Account</div>
+        
         <div
           class="list-group-item list-group-item-action hoverable text-danger"
           @click="logout"
