@@ -1,8 +1,25 @@
 <template>
 <div class="container-fluid">
     <div class="row">
-      <div class="col-md-10 offset-md-1 m-3">
-        <h1 class="d-flex justify-content-center">Post making form</h1>
+      <div class="col-10 offset-1 m-3 border border-3 border-info d-flex justify-content-center rounded bg-dark">
+        <form class="row m-1" action="">
+          <div class="col-10 offset-1m-2">
+            <label for="">Post Body</label>
+            <textarea
+              class="form-control"
+              name=""
+              id=""
+              cols="25"
+              rows="5"
+              v-model="postData.body"
+            ></textarea>
+          </div>
+          <div class="col-10 offset-1 m-2">
+            <label for="">Post Image link</label>
+            <input class="form-control" type="text" v-model="postData.imgUrl" />
+          </div>
+          <button class="m-2" @click="postPost()">Post Post!</button>
+        </form>
       </div>
       
         <div class="container">
@@ -30,15 +47,23 @@
 </template>
 
 <script>
-  import { computed, onMounted } from "vue"
+  import { computed, onMounted, ref, watchEffect } from "vue"
 import { AppState } from "../AppState"
 import { postsService } from "../services/PostsService"
 import { tismentsService } from "../services/TismentsService"
 import Tisment from "../components/Tisment.vue"
+import { logger } from "../utils/Logger"
+import Pop from "../utils/Pop"
 
 export default {
     name: "Home",
-    setup() {
+    props: { editPost: { type: Object, required: false, default: {}}},
+    setup(props) {
+        const postData = ref({});
+        watchEffect(()=>{
+          logger.log(props.editPost);
+          postData.value = props.editPost;
+        })
         onMounted(async () => {
             const res = await postsService.getPosts();
         });
@@ -46,6 +71,18 @@ export default {
             const res = await tismentsService.getTisments();
         });
         return {
+            postData,
+            async createPost(){
+              try {
+                logger.log(postData.value);
+                await postsService.createPost(postData.value);
+                postData.value = {};
+                Pop.toast("Posted Post!", "success")
+              } catch (error) {
+                logger.error(error)
+                Pop.toast(error.message, 'error')
+              }
+            },
             posts: computed(() => AppState.posts),
             nextPage: computed(() => AppState.nextPage),
             previousPage: computed(() => AppState.previousPage),

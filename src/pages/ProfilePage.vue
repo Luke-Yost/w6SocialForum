@@ -6,7 +6,12 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-12 border border-4 border-info rounded bg-dark m-2">
+              
+              <!-- <slot name="profileSpot">
+                <template><Profile /></template>
+              </slot> -->
 
+              <!-- <Profile v-if="0 == 0" /> -->
               <div class="container">
                 <div class="row">
                   <div class="col-md-8">
@@ -52,6 +57,7 @@ import Profile  from "../components/Profile.vue"
 import Tisment from "../components/Tisment.vue"
 import ProfilePost from "../components/ProfilePost.vue"
 
+
 export default {
     name: 'Profile',
   setup(){
@@ -61,7 +67,7 @@ export default {
       profilePosts: computed(() => AppState.selectedProfilePosts),
     }
   },
-  components: { Profile,  }
+  components: { Profile, }
 }
 </script>
 

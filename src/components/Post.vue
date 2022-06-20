@@ -13,6 +13,7 @@
         <router-link @click="setSelectedProfile(post.creatorId)" :to="{name: 'Profile', params: {id: post.id} }">
           <div class="border bg-dark rounded">
             <h6 class="m-1">- {{post.creator.name}}</h6>
+            <img class="img-fluid" :src="post.creator.picture" alt="creator picture">
             <p class="m-1">Go to Profile</p>
           </div>
         </router-link>

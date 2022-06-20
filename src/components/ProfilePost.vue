@@ -1,6 +1,6 @@
 <template>
 
-    <div class="row border border-info border-3 rounded d-flex">
+    <div class="row border border-info border-3 rounded d-flex m-2">
       <div class="col-md-6 align-items-center">
         <img class="img-fluid rounded " :src="profilePost?.imgUrl" alt="post image">
       </div>

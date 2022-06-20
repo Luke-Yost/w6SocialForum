@@ -8,7 +8,7 @@ export const AppState = reactive({
   nextPage: "",
   previousPage: "",
   tisments: [],
-  selectedProfiles: [],
+  selectedProfile: {},
   selectedProfilePosts: [],
   
 })
